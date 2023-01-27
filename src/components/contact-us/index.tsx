@@ -1,5 +1,4 @@
 import React from 'react';
-import { tw } from 'twind';
 
 const ContactUs = () => {
   React.useEffect(() => {
@@ -16,12 +15,12 @@ const ContactUs = () => {
   }, []);
 
   return (
-    <section id="contact" className={tw(`bg-gradient-to-b from-gray-100 to-white shadow-inner pt-12`)}>
-      <div className={tw(`relative max-w-7xl mx-auto mb-24`)}>
-        <div className={tw(`overflow-hidden lg:max-w-none lg:flex`)}>
-          <div className={tw(`py-8 px-6 md:px-0 lg:flex-shrink-1/2`)}>
-            <h2 className={tw(`text-4xl lg:text-7xl font-bold text-gray-800 mb-12`)}>Have a question?</h2>
-            <p className={tw(`mt-6 text-base leading-6 text-gray-500`)}>
+    <section id="contact" className="bg-gradient-to-b from-gray-100 to-white shadow-inner pt-12">
+      <div className="relative max-w-7xl mx-auto mb-24">
+        <div className="overflow-hidden lg:max-w-none lg:flex">
+          <div className="py-8 px-6 md:px-0 lg:flex-shrink-1/2">
+            <h2 className="text-4xl lg:text-7xl font-bold text-gray-800 mb-12">Have a question?</h2>
+            <p className="mt-6 text-base leading-6 text-gray-500">
               We are always happy to chat. Feel free to reach out to us!
             </p>
           </div>

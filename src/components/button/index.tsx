@@ -1,5 +1,3 @@
-import { tw } from 'twind';
-
 interface IButton {
   primary?: boolean;
   children: React.ReactNode;
@@ -14,7 +12,7 @@ const Button = ({ primary, modifier, children, ...rest }: IButton) => {
     : `bg-white text-gray-600 border-gray-300 hover:bg-gray-100`;
 
   return (
-    <button type="button" className={tw(`${baseStyle} ${styles} ${modifier ?? ``}`)} {...rest}>
+    <button type="button" className={`${baseStyle} ${styles} ${modifier ?? ``}`} {...rest}>
       {children}
     </button>
   );
