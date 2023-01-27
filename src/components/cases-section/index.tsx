@@ -17,8 +17,8 @@ const ParticleBg = () => (
           enable: false,
         },
         move: {
-          direction: `right`,
-          speed: 0.3,
+          direction: `top`,
+          speed: 0.6,
         },
         size: {
           value: 1,
@@ -26,7 +26,7 @@ const ParticleBg = () => (
         opacity: {
           anim: {
             enable: true,
-            speed: 0.5,
+            speed: 1,
             opacity_min: 0.1,
           },
         },

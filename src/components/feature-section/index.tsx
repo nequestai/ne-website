@@ -15,7 +15,7 @@ const FeatureSection = () => (
           <div className={tw(`w-full border-b md:w-1/2 md:border-r lg:w-1/3 p-8`)}>
             <div className={tw(`flex items-center mb-6`)}>
               <Check width={20} height={20} fill="currentColor" className={tw(`h-6 w-6 text-indigo-500`)} />
-              <div className={tw(`ml-4 text-xl`)}>Increase sales</div>
+              <div className={tw(`ml-4 text-xl`)}>Quantifiable Results</div>
             </div>
             <p className={tw(`leading-loose text-gray-500`)}>
               Consectetur pariatur irure exercitation sit amet id consectetur consecteturmagna et Lorem labore qui
@@ -25,7 +25,7 @@ const FeatureSection = () => (
           <div className={tw(`w-full border-b md:w-1/2 lg:w-1/3 lg:border-r p-8`)}>
             <div className={tw(`flex items-center mb-6`)}>
               <Check width={20} height={20} fill="currentColor" className={tw(`h-6 w-6 text-indigo-500`)} />
-              <div className={tw(`ml-4 text-xl`)}>Enterprise-ready</div>
+              <div className={tw(`ml-4 text-xl`)}>Fully Remote</div>
             </div>
             <p className={tw(`leading-loose text-gray-500 `)}>
               Labore duis pariatur est exercitation laboris cupidatat amet cillum. Amet nisi ullamco.
@@ -34,7 +34,7 @@ const FeatureSection = () => (
           <div className={tw(`w-full border-b md:w-1/2 md:border-r lg:w-1/3 lg:border-r-0 p-8`)}>
             <div className="flex items-center mb-6">
               <Check width={20} height={20} fill="currentColor" className={tw(`h-6 w-6 text-indigo-500`)} />
-              <div className={tw(`ml-4 text-xl`)}>Unlimited growth</div>
+              <div className={tw(`ml-4 text-xl`)}>Built by doctors for doctors</div>
             </div>
             <p className={tw(`leading-loose text-gray-500`)}>
               Elit deserunt nisi esse duis cupidatat proident sit minim mollit officia pariatur incididunt in tempor.

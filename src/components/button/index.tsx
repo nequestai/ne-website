@@ -4,6 +4,7 @@ interface IButton {
   primary?: boolean;
   children: React.ReactNode;
   modifier?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({ primary, modifier, children, ...rest }: IButton) => {

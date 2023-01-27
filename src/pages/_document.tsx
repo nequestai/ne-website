@@ -38,7 +38,7 @@ class MyDocument extends Document {
         <Head>
           <script async src="https://scripts.simpleanalyticscdn.com/latest.js" />
         </Head>
-        <body>
+        <body style={{ scrollBehavior: `smooth` }}>
           <Main />
           <NextScript />
         </body>
