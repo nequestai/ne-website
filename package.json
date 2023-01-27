@@ -1,9 +1,9 @@
 {
-  "name": "startd-theme",
-  "description": "A TypeScript/Next.js theme that includes everything you need to build amazing landing page!",
+  "name": "nequest-website",
+  "description": "Marketing site for NEquest",
   "version": "1.0.0",
   "private": true,
-  "author": "Jaakko Kytölä <kytola.jaakko@gmail.com> (jaakkokytola.com)",
+  "author": "Satya Sampathirao <lprajus2007@gmail.com>",
   "license": "MIT",
   "keywords": [
     "nextjs",

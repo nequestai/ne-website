@@ -6,7 +6,7 @@ const ContactUs = () => {
     const id = `typef_orm`;
     const b = `https://embed.typeform.com/`;
     if (!document.getElementById.call(document, `typef_orm`)) {
-      const js: HTMLScriptElement = document.createElement.call(document, `script`);
+      const js: any = document.createElement.call(document, `script`);
       js.id = id;
       js.src = `${b}embed.js`;
       // eslint-disable-next-line prefer-destructuring
