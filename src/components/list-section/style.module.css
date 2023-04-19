@@ -1,0 +1,24 @@
+.highlight-container,
+.highlight {
+  position: relative;
+}
+
+.highlight-container {
+  display: inline-block;
+}
+
+.highlight-container:before {
+  content: ' ';
+  display: block;
+  height: 90%;
+  width: 100%;
+  margin-left: -2px;
+  margin-right: -2px;
+  position: absolute;
+  background: #FF725E;
+  transform: rotate(2deg);
+  top: 3px;
+  left: 2px;
+  border-radius: 5% 10% 20% 16%;
+  padding: 15px 5px 5px 10px;
+}

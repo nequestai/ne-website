@@ -2,10 +2,19 @@ import Button from '@/components/button';
 
 const Footer = () => (
   <footer className="bg-white border-t border-gray-400 pt-14 pb-16">
-    <div className="max-w-7xl mx-auto text-gray-400 px-8 lg:px-0 flex flex-wrap">
-      <div className="mb-14 flex items-center w-full">
-        <img className="h-12 w-12 mr-4" src="logo.svg" alt="logo" width={48} height={48} />
-        <p className="text-4xl text-indigo-500 font-bold">NEquest</p>
+    <div
+      className="mx-auto text-gray-400 px-8 lg:px-0 flex flex-col items-center justify-center"
+      style={{
+        gap: `1.5rem`,
+      }}
+    >
+      <div
+        className="items-center"
+        style={{
+          width: `256px`,
+        }}
+      >
+        <img className="w-full" src="logo.svg" alt="logo" />
       </div>
       <div className="w-full lg:w-1/2 mt-12 lg:mt-0">
         <div className="border border-gray-400 rounded py-5 px-4">
@@ -21,6 +30,10 @@ const Footer = () => (
           </div>
         </div>
       </div>
+    </div>
+    <div className="text-center py-2">
+      © {new Date().getFullYear()} NEquest Sciences Inc. Work illustrations by{` `}
+      <a href="https://storyset.com/work">Storyset</a>
     </div>
   </footer>
 );

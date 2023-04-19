@@ -8,9 +8,9 @@ interface IProps {
 const Page = ({ children }: IProps) => (
   <div>
     <Head>
-      <link rel="icon" href="/logo.svg" />
+      <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col px-4 sm:px-6 lg:px-8">
       <Navigation />
       {children}
     </div>

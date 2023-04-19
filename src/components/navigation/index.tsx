@@ -25,13 +25,6 @@ const links = [
   },
 ];
 
-const secondaryLinks = [
-  {
-    label: `Get Started`,
-    href: `/`,
-  },
-];
-
 const MenuButton = ({ toggleMenu, showMenu }: IMenuButton) => (
   <button
     type="button"
@@ -71,27 +64,19 @@ const MenuButton = ({ toggleMenu, showMenu }: IMenuButton) => (
   </button>
 );
 
-const MobileMenu = () => (
-  <div className="md:hidden">
+const MobileMenu = ({ toggleMenu }: any) => (
+  <div className="md:hidden absolute">
     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       {links.map((link: Link) => (
-        <a href={link.href} className="text-gray-500 block px-3 py-2 text-base font-medium" key={link.label}>
+        <a
+          href={link.href}
+          onClick={() => toggleMenu()}
+          className="text-gray-500 block px-3 py-2 text-base font-medium"
+          key={link.label}
+        >
           {link.label}
         </a>
       ))}
-    </div>
-    <div className="pt-4 pb-3 border-t border-gray-400">
-      <div className="px-2 space-y-1">
-        {secondaryLinks.map((link: Link) => (
-          <a
-            key={`mobile-${link.label}`}
-            href={link.href}
-            className="block px-3 py-2 text-base font-medium text-gray-500"
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
     </div>
   </div>
 );
@@ -102,14 +87,14 @@ const Navigation = () => {
 
   return (
     <nav className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <img className="h-12 w-12" src="logo.svg" alt="logo" width={48} height={48} />
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-center w-full h-24">
+          <div className="flex items-center w-full justify-between">
+            <div>
+              <img className="w-full" src="logo.svg" alt="logo" />
             </div>
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
+              <div className="flex items-baseline space-x-4">
                 {links.map((link: Link) => (
                   <a
                     key={link.label}
@@ -127,7 +112,7 @@ const Navigation = () => {
           </div>
         </div>
       </div>
-      {showMenu ? <MobileMenu /> : null}
+      {showMenu ? <MobileMenu toggleMenu={toggleMenu} /> : null}
     </nav>
   );
 };
