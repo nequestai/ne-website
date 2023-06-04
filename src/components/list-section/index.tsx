@@ -27,23 +27,23 @@ const ListSection = () => (
   <section className="lg:py-18 pt-16 overflow-hidden">
     <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 bg-white">
       <div id="about" className="pt-2 text-center">
-        <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">A better mousetrap</h2>
+        <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Teleneurology is broken</h2>
         <p className="mt-4 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900">We can do better</p>
       </div>
       <div className="mt-12">
-        <p className="text-gray-500 text-xl p-12 rounded-lg leading-relaxed border-2">
+        <p className="text-gray-500 text-xl p-8 text-center rounded-xl border-violet-700 border-2">
           <b>NEquest</b> is a telemedicine platform <b>designed by doctors for doctors</b> that enables neurologists to
-          conduct remote neurological exams and track patient progress with a comprehensive test battery. <br /> <br />
-          Patients complete tasks asynchronously, with quantified results securely uploaded for review by their
+          conduct remote neurological exams and track patient progress with a comprehensive test battery.
+          {/* Patients complete tasks asynchronously, with quantified results securely uploaded for review by their
           neurologist. This saves valuable time for personalized care during synchronous appointments and informs
-          clinical decisions backed by objective insights.
+          clinical decisions backed by objective insights. */}
         </p>
       </div>
       <div className="flex flex-wrap py-6 mt-12 items-center justify-center">
         <div className="w-full lg:w-1/2 px-4 md:px-8">
           <ul className="space-y-12">
             {listItems.map((item, index) => (
-              <li className="flex -mx-4" key={item.title}>
+              <li className="flex -mx-4" key={item.title || item.title1}>
                 <div>
                   <span
                     className="flex w-16 h-16 mx-auto items-center

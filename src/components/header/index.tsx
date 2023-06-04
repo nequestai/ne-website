@@ -23,7 +23,7 @@ const Header = () => {
         </h1>
         <div className="max-w-xl mx-auto">
           <p className="mt-10 text-gray-500 text-center text-xl lg:text-3xl">
-            We are building the next generation of assistive tools for neurologists.
+            NEquest is building the next generation of assistive tools for neurologists.
           </p>
         </div>
         <div className="mt-10 flex flex-row sm:flex-row gap-2 justify-center items-center w-full mx-auto">
