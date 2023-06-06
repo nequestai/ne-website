@@ -14,7 +14,7 @@ const Header = () => {
       }}
       className="flex items-center"
     >
-      <div className="max-w-4xl mx-auto px-12 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-8 sm:px-6 lg:px-8">
         <h1 className="font-sans font-bold text-5xl lg:text-8xl text-center leading-snug text-gray-800">
           Neurocare for{` `}
           <span className={styles[`highlight-container`]}>

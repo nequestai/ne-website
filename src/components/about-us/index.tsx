@@ -1,5 +1,7 @@
 import Image from 'next/image';
 
+import styles from './style.module.css';
+
 const FeatureSection = () => (
   <section id="team" className="bg-white pb-6">
     <div className="max-w-7xl mx-auto py-4">
@@ -7,7 +9,12 @@ const FeatureSection = () => (
         <div className="text-center p-4">
           <h4 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">OUR TEAM</h4>
           <p className="text-5xl lg:text-7xl font-bold tracking-tight text-gray-900">
-            On a mission to democratize neurological care
+            On a mission to{` `}
+            <span className={`${styles[`highlight-container`]} p-2`}>
+              <span className={`${styles.highlight} text-white`}>democratize</span>
+            </span>
+            {` `}
+            neurological care
           </p>
           <br />
         </div>

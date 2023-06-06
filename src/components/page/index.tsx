@@ -1,6 +1,12 @@
 import Head from 'next/head';
 import Navigation from '@/components/navigation';
 
+// theme
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
+
+// core
+import 'primereact/resources/primereact.min.css';
+
 interface IProps {
   children: React.ReactNode;
 }
