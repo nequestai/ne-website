@@ -31,7 +31,7 @@ const MenuButton = ({ toggleMenu, showMenu }: IMenuButton) => (
     aria-controls="mobile-menu"
     aria-expanded={showMenu}
     onClick={toggleMenu}
-    className="p-2 text-gray-400"
+    className="text-gray-400"
   >
     <span className="sr-only">Open menu</span>
     {showMenu ? (

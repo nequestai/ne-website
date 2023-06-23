@@ -10,7 +10,7 @@ const Header = () => {
     <header
       style={{
         backgroundColor: `#ffffff`,
-        minHeight: `calc(100vh - 6rem)`,
+        minHeight: `calc(100vh - 10rem)`,
       }}
       className="flex items-center"
     >

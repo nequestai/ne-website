@@ -1,7 +1,14 @@
 import { AppProps } from 'next/app';
+
+import { Nunito } from 'next/font/google';
+
 import '@/styles/global.css';
-import '@fontsource/inter';
+
+const nunito = Nunito({
+  // eslint-disable-next-line @typescript-eslint/quotes
+  subsets: ['latin-ext'],
+});
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return <Component className={nunito.className} {...pageProps} />;
 }

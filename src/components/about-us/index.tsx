@@ -4,7 +4,7 @@ import styles from './style.module.css';
 
 const FeatureSection = () => (
   <section id="team" className="bg-white pb-6">
-    <div className="max-w-7xl mx-auto py-4">
+    <div className="max-w-7xl mx-auto pt-8 pb-16">
       <div className="container mx-auto bg-white">
         <div className="text-center p-4">
           <h4 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">OUR TEAM</h4>
