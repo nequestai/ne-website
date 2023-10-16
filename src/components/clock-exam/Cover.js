@@ -11,32 +11,6 @@ import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
-// const useStyles = makeStyles((theme) => ({
-//   cardRoot: {
-//     margin: '20px 20px 20px -10px',
-//     border: '1px solid grey',
-//   },
-//   root: {
-//     fontFamily: 'Nunito !important',
-//     paddingLeft: '30px',
-//     minHeight: '50vh',
-//     [theme.breakpoints.down(600 + theme.spacing(2) * 2)]: {
-//       minHeight: '96vh',
-//     },
-//   },
-//   bullet: {
-//     display: 'inline-block',
-//     margin: '0 2px',
-//     transform: 'scale(0.8)',
-//   },
-//   title: {
-//     fontSize: 14,
-//   },
-//   pos: {
-//     marginBottom: 12,
-//   },
-// }));
-
 const prefix = `CoverComponent`;
 const classes = {
   root: `${prefix}-root`,
@@ -69,8 +43,6 @@ const StyledDiv = styled(Box)(({ theme }) => ({
 }));
 
 const Cover = ({ setConsent }) => (
-  // const classes = useStyles();
-
   <StyledDiv>
     <Grid container className={classes.root}>
       <Grid item>
@@ -107,4 +79,5 @@ const Cover = ({ setConsent }) => (
     </Grid>
   </StyledDiv>
 );
+
 export default Cover;

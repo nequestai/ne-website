@@ -90,7 +90,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center w-full h-24">
           <div className="flex items-center w-full justify-between">
-            <div>
+            <div className="max-w-xs">
               <img className="w-full" src="logo.svg" alt="logo" />
             </div>
             <div className="hidden md:block">

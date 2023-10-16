@@ -2,7 +2,6 @@ import React, { useCallback, useState, useEffect } from 'react';
 import { isEmpty } from 'lodash';
 import { gql, useMutation } from '@apollo/client';
 
-// import { makeStyles } from '@material-ui/core/styles';
 import { styled } from '@mui/material/styles';
 import { Grid, Paper, Stepper, Step, StepLabel, Button, Typography, ThemeProvider, Divider } from '@mui/material';
 
@@ -27,17 +26,23 @@ import CollectPersonalInfo from './CollectPersonalInfo';
 import Review from './Review';
 import Cover from './Cover';
 
-let suffix = '';
+let suffix = ``;
 
-if (process.env.NODE_ENV === 'development') {
-  suffix = 'Dev';
+if (process.env.NODE_ENV === `development`) {
+  suffix = `Dev`;
 }
 
-const steps = ['Personal Details', 'Draw a Clock', 'Draw a Spiral', 'Your Results'];
+const steps = [`Personal Details`, `Draw a Clock`, `Draw a Spiral`, `Your Results`];
 
 const INSERT_EXPERIMENT = gql`
   mutation insertExperiment1${suffix}($age: Float!, $country: String!, $gender: String!, $conditions: String) {
-    insert_experiment1${suffix}(age: $age, country: $country, gender: $gender, version: "1.0.1", conditions: $conditions) {
+    insert_experiment1${suffix}(
+      age: $age,
+      country: $country,
+      gender: $gender,
+      version: "1.0.1",
+      conditions: $conditions
+    ) {
       id,
       pk
     }
@@ -109,47 +114,6 @@ const UPDATE_SPIRAL = gql`
   }
 `;
 
-// const useStyles = makeStyles((theme) => ({
-//   appBar: {
-//     position: 'relative',
-//   },
-//   thankyouContainer: {
-//     textAlign: 'center',
-//     padding: '50px',
-//   },
-//   layout: {
-//     width: 'auto',
-//     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
-//       width: 600,
-//       marginLeft: 'auto',
-//       marginRight: 'auto',
-//     },
-//   },
-//   paper: {
-//     marginTop: theme.spacing(3),
-//     marginBottom: theme.spacing(3),
-//     borderRadius: 15,
-//     overflow: 'hidden',
-//     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
-//       marginTop: theme.spacing(6),
-//       marginBottom: theme.spacing(6),
-//       padding: theme.spacing(3),
-//     },
-//   },
-//   stepper: {
-//     padding: theme.spacing(2),
-//   },
-//   buttons: {
-//     display: 'flex',
-//     justifyContent: 'flex-end',
-//     padding: theme.spacing(2),
-//   },
-//   button: {
-//     marginTop: theme.spacing(3),
-//     marginLeft: theme.spacing(1),
-//   },
-// }));
-
 const PREFIX = `ClockAndSpiralExam`;
 const classes = {
   thankyouContainer: `${PREFIX}-thankyouContainer`,
@@ -159,26 +123,26 @@ const classes = {
   buttons: `${PREFIX}-buttons`,
   button: `${PREFIX}-button`,
 };
-const Root = styled('div')(({ theme }) => ({
+const Root = styled(`div`)(({ theme }) => ({
   [`& .${classes.thankyouContainer}`]: {
-    textAlign: 'center',
-    padding: '50px',
+    textAlign: `center`,
+    padding: `50px`,
   },
   [`& .${classes.layout}`]: {
-    width: 'auto',
-    fontFamily: 'Nunito !important',
-    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+    width: `auto`,
+    fontFamily: `Nunito !important`,
+    [theme.breakpoints.up(600 + Number(theme.spacing(2)) * 2)]: {
       width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: `auto`,
+      marginRight: `auto`,
     },
   },
   [`& .${classes.paper}`]: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(3),
     borderRadius: 15,
-    overflow: 'hidden',
-    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+    overflow: `hidden`,
+    [theme.breakpoints.up(600 + Number(theme.spacing(3)) * 2)]: {
       marginTop: theme.spacing(6),
       marginBottom: theme.spacing(6),
       padding: theme.spacing(3),
@@ -188,8 +152,8 @@ const Root = styled('div')(({ theme }) => ({
     padding: theme.spacing(2),
   },
   [`& .${classes.buttons}`]: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+    display: `flex`,
+    justifyContent: `flex-end`,
     padding: theme.spacing(2),
   },
   [`& .${classes.button}`]: {
@@ -198,33 +162,16 @@ const Root = styled('div')(({ theme }) => ({
   },
 }));
 
-function getStepContent({
-  step,
-  personalDetails,
-  setPersonalDetails,
-  formState,
-  setFormState,
-  fetchState,
-  fetcher,
-  silenceAlert,
-}) {
+function getStepContent({ step, personalDetails, formState, setFormState, fetchState, fetcher, silenceAlert }: any) {
   switch (step) {
     case 0:
-      return (
-        <PersonalDetails
-          personalDetails={personalDetails}
-          setPersonalDetails={setPersonalDetails}
-          formState={formState}
-          setFormState={setFormState}
-          fetchState={fetchState}
-          fetcher={fetcher}
-        />
-      );
+      return <PersonalDetails personalDetails={personalDetails} setFormState={setFormState} />;
     case 1:
       return (
         <FreehandContainer
           variant="clock"
           formState={formState}
+          personalDetails={personalDetails}
           setFormState={setFormState}
           fetchState={fetchState}
           fetcher={fetcher}
@@ -236,6 +183,7 @@ function getStepContent({
         <FreehandContainer
           variant="spiral"
           formState={formState}
+          personalDetails={personalDetails}
           setFormState={setFormState}
           fetchState={fetchState}
           fetcher={fetcher}
@@ -243,9 +191,9 @@ function getStepContent({
         />
       );
     case 3:
-      return <Review setFormState={setFormState} fetchState={fetchState} formState={formState} />;
+      return <Review fetchState={fetchState} />;
     default:
-      throw new Error('Unknown step');
+      throw new Error(`Unknown step`);
   }
 }
 
@@ -257,9 +205,8 @@ function getStepButtons({
   formState,
   fetchState,
   fetcher,
-}) {
+}: any) {
   const handleNext = () => {
-    console.log(personalDetails, activeStep, formState);
     // on personal details screen
     if (activeStep === 0 && !personalDetails) {
       setPersonalDetails(true);
@@ -283,7 +230,13 @@ function getStepButtons({
 
   return activeStep === steps.length - 1 ? (
     <>
-      {/* <Button variant="contained" className={classes.button} color="primary" onClick={() => setActiveStep(1)} className={classes.button}>
+      {/* <Button
+        variant="contained"
+        className={classes.button}
+        color="primary"
+        onClick={() => setActiveStep(1)}
+        className={classes.button}
+      >
         Retry
       </Button> */}
       <Button variant="contained" className={classes.button} color="primary" onClick={handleNext}>
@@ -298,22 +251,45 @@ function getStepButtons({
 }
 
 export default function ClockAndSpiralExam() {
-  // const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [personalDetails, setPersonalDetails] = React.useState(false);
-  const [formState, setFormState] = React.useState({});
-  const [fetchState, fetcher] = React.useState({ alert: false });
-  const [fbUrl, setFbUrl] = useState('');
+  const [formState, setFormState] = React.useState({
+    age: ``,
+    country: {
+      label: ``,
+      value: ``,
+    },
+    gender: ``,
+    conditions: ``,
+    other: ``,
+  });
+  const [fetchState, fetcher] = React.useState({
+    alert: false,
+    T_clock: null,
+    T_spiral: null,
+    Do_clock: null,
+    Dp_clock: null,
+    Ha_clock: null,
+    Ob_clock: null,
+    Ls_spiral: null,
+    Ds_spiral: null,
+    W_spiral: null,
+    C_spiral: null,
+    Td_spiral: null,
+    clock_json: null,
+    spiral_json: null,
+  });
+  const [fbUrl, setFbUrl] = useState(``);
   const [insertExperiment1, experiment1] = useMutation(INSERT_EXPERIMENT);
   const [updateExperiment1, experiment1Updated] = useMutation(UPDATE_EXPERIMENT);
   const [updateClock, updatedClock] = useMutation(UPDATE_CLOCK);
   const [updateSpiral, updatedSpiral] = useMutation(UPDATE_SPIRAL);
   const [consent, setConsent] = useState(false);
-  const [pk, setPk] = useState('');
-  const [id, setId] = useState('');
+  const [pk, setPk] = useState(``);
+  const [id, setId] = useState(``);
 
   useEffect(() => {
-    setFbUrl(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://nequest.ai/clock-exam')}`);
+    setFbUrl(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://nequest.ai/clock-exam`)}`);
   }, []);
 
   const silenceAlert = useCallback(
@@ -329,7 +305,7 @@ export default function ClockAndSpiralExam() {
 
   useEffect(() => {
     // create record
-    if (!isEmpty(formState) && !experiment1.called) {
+    if (!isEmpty(formState) && formState.age && !experiment1.called) {
       insertExperiment1({
         variables: {
           age: parseFloat(formState.age),
@@ -375,7 +351,7 @@ export default function ClockAndSpiralExam() {
           });
         }
 
-        if (!updatedClock.called && typeof fetchState.T_clock === 'number') {
+        if (!updatedClock.called && typeof fetchState.T_clock === `number`) {
           updateClock({
             variables: {
               id: record_id,
@@ -388,7 +364,7 @@ export default function ClockAndSpiralExam() {
               userAgent: navigator.userAgent,
             },
           });
-        } else if (!updatedSpiral.called && typeof fetchState.T_spiral === 'number') {
+        } else if (!updatedSpiral.called && typeof fetchState.T_spiral === `number`) {
           updateSpiral({
             variables: {
               id: record_id,
@@ -439,7 +415,7 @@ export default function ClockAndSpiralExam() {
           </Typography>
           <Grid item xs={12}>
             <Grid container>
-              <Grid item xs={12} style={{ textAlign: 'left', paddingTop: '20px' }}>
+              <Grid item xs={12} style={{ textAlign: `left`, paddingTop: `20px` }}>
                 <Typography variant="subtitle2" gutterBottom>
                   Share this exam:
                 </Typography>
@@ -451,7 +427,7 @@ export default function ClockAndSpiralExam() {
               ))}
             </Grid>
           </Grid>
-          <Divider style={{ margin: '30px 0px' }} />
+          <Divider style={{ margin: `30px 0px` }} />
           <CollectPersonalInfo pk={pk} id={id} />
         </div>
       );

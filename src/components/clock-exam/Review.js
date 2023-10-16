@@ -1,5 +1,6 @@
 import React from 'react';
 // import { makeStyles } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -27,17 +28,23 @@ const GET_RESULTS = gql`
   }
 `;
 
-// const useStyles = makeStyles((theme) => ({
-//   listItem: {
-//     padding: `${theme.spacing(1) / 2}px ${theme.spacing(1)}px`,
-//   },
-//   total: {
-//     fontWeight: 700,
-//   },
-//   title: {
-//     marginTop: theme.spacing(2),
-//   },
-// }));
+const prefix = `ReviewComponent`;
+const classes = {
+  listItem: `${prefix}-listItem`,
+  total: `${prefix}-total`,
+  title: `${prefix}-title`,
+};
+const StyledDiv = styled(Grid)(({ theme }) => ({
+  [`& .${classes.listItem}`]: {
+    padding: `${theme.spacing(1) / 2}px ${theme.spacing(1)}px`,
+  },
+  [`& .${classes.total}`]: {
+    fontWeight: 700,
+  },
+  [`& .${classes.title}`]: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 export default function Review({ fetchState }) {
   // const classes = useStyles();
@@ -92,7 +99,12 @@ export default function Review({ fetchState }) {
   }
 
   React.useEffect(() => {
-    getResults();
+    try {
+      getResults();
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error(e);
+    }
   }, []);
 
   React.useEffect(() => {
@@ -109,37 +121,39 @@ export default function Review({ fetchState }) {
   }, [clockPercentile, spiralPercentile]);
 
   return (
-    <Grid container style={{ padding: '30px' }} spacing={2}>
-      <Grid item xs={12}>
-        {clockPercentile && spiralPercentile ? (
-          <>
-            <Typography variant="h6" gutterBottom>
-              Clock
-            </Typography>
-            <List disablePadding>
-              {cMetrics.map((product) => (
-                <ListItem key={product.name}>
-                  <ListItemText primary={product.name} secondary={product.desc} />
-                  <Typography variant="body2">{product.value}</Typography>
-                </ListItem>
-              ))}
-            </List>
-            <Typography variant="h6" gutterBottom>
-              Spiral
-            </Typography>
-            <List disablePadding>
-              {sMetrics.map((product) => (
-                <ListItem key={product.name}>
-                  <ListItemText primary={product.name} secondary={product.desc} />
-                  <Typography variant="body2">{product.value}</Typography>
-                </ListItem>
-              ))}
-            </List>
-          </>
-        ) : (
-          <CircularProgress style={{ display: 'block', margin: '50px auto' }} />
-        )}
+    <StyledDiv>
+      <Grid container style={{ padding: '30px' }} spacing={2}>
+        <Grid item xs={12}>
+          {clockPercentile && spiralPercentile ? (
+            <>
+              <Typography variant="h6" gutterBottom>
+                Clock
+              </Typography>
+              <List disablePadding>
+                {cMetrics.map((product) => (
+                  <ListItem key={product.name} className={classes.listItem}>
+                    <ListItemText primary={product.name} secondary={product.desc} />
+                    <Typography variant="body2">{product.value}</Typography>
+                  </ListItem>
+                ))}
+              </List>
+              <Typography variant="h6" gutterBottom>
+                Spiral
+              </Typography>
+              <List disablePadding>
+                {sMetrics.map((product) => (
+                  <ListItem key={product.name} className={classes.listItem}>
+                    <ListItemText primary={product.name} secondary={product.desc} />
+                    <Typography variant="body2">{product.value}</Typography>
+                  </ListItem>
+                ))}
+              </List>
+            </>
+          ) : (
+            <CircularProgress style={{ display: 'block', margin: '50px auto' }} />
+          )}
+        </Grid>
       </Grid>
-    </Grid>
+    </StyledDiv>
   );
 }

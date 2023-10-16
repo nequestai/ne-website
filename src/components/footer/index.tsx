@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useScrollPosition } from 'react-use-scroll-position';
 
 import { Toast } from 'primereact/toast';
 
 import Button from '@/components/button';
 
 const Footer = () => {
+  const ref = useRef<HTMLElement>(null);
+  const [showLogo, setShowLogo] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [subscribeEmail, setSubscribeEmail] = React.useState(``);
   const toast = React.useRef<Toast>(null);
+  const { y } = useScrollPosition();
+
+  useEffect(() => {
+    if (ref.current && y > ref.current.offsetTop - 500) {
+      setShowLogo(true);
+    } else {
+      setShowLogo(false);
+    }
+  }, [y]);
 
   return (
-    <footer className="bg-white border-t border-gray-400 pt-14 pb-16">
+    <footer className="bg-white border-t border-gray-400 pt-14 pb-16" ref={ref}>
       <div
         className="mx-auto text-gray-400 px-8 lg:px-0 flex flex-col items-center justify-center"
         style={{
@@ -19,7 +31,7 @@ const Footer = () => {
       >
         <Toast ref={toast} position="bottom-right" />
         <div
-          className="items-center"
+          className={`items-center ${showLogo ? `opacity-100` : `opacity-0`} transition-all duration-1000 ease-in-out`}
           style={{
             width: `256px`,
           }}
@@ -54,7 +66,7 @@ const Footer = () => {
                   if (valid) {
                     toast.current?.show({
                       severity: `info`,
-                      summary: `Info`,
+                      summary: `Thank you`,
                       detail: `${subscribeEmail}, you're subscribed!`,
                     });
                     setSubscribeEmail(``);

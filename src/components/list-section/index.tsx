@@ -30,16 +30,13 @@ const ListSection = () => (
         <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Teleneurology is broken</h2>
         <p className="mt-4 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900">We can do better</p>
       </div>
-      <div className="mt-12">
-        <p className="text-gray-500 text-xl p-8 text-center rounded-xl border-violet-700 border-2">
+      <div className="mt-6">
+        <p className="text-gray-500 text-xl text-center rounded-xl border-violet-700">
           <b>NEquest</b> is a telemedicine platform <b>designed by doctors for doctors</b> that enables neurologists to
           conduct remote neurological exams and track patient progress with a comprehensive test battery.
-          {/* Patients complete tasks asynchronously, with quantified results securely uploaded for review by their
-          neurologist. This saves valuable time for personalized care during synchronous appointments and informs
-          clinical decisions backed by objective insights. */}
         </p>
       </div>
-      <div className="flex flex-wrap py-6 mt-12 items-center justify-center">
+      <div className="flex flex-wrap py-6 mt-6 items-center justify-center">
         <div className="w-full lg:w-1/2 px-4 md:px-8">
           <ul className="space-y-12">
             {listItems.map((item, index) => (
